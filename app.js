@@ -80,6 +80,11 @@
       email, options: { shouldCreateUser: false, emailRedirectTo: location.origin + location.pathname },
     });
     $("#send-link").disabled = false;
+    if (error && /sending|smtp/i.test(error.message)) {
+      document.querySelector(".pw").open = true;
+      $("#login-password").focus();
+      return setMsg($("#login-msg"), "Email sending isn't working right now. Sign in with your password below.", true);
+    }
     if (error) return setMsg($("#login-msg"), /signups not allowed|not found/i.test(error.message) ? "No admin account with that email." : /rate limit|too many/i.test(error.message) ? "Email limit reached (Supabase free email sends ~2 per hour). Please try again in an hour." : /seconds/i.test(error.message) ? "Please wait a minute before asking for another link." : "Couldn't send: " + error.message, true);
     setMsg($("#login-msg"), "");
     $("#sent-to").textContent = email;
