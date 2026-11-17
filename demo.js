@@ -11,7 +11,7 @@ window.makeDemoClient = function () {
     chapters: ["The Auction", "Iron and Silk", "The Second Bell", "Teeth", "A Quiet Knife", "The Queen's Hound", "Ash on the Stairs", "What the River Kept"]
       .map((t, i) => ({ book_id: "silver-collar", index: i, title: t, paragraphs: Array(16 + (i % 5) * 4).fill("The court never slept, and neither did she. *Not tonight.*") })),
     app_settings: Object.entries({ coins_per_chapter: 30, free_chapters: 3, free_unlock_hours: 4, daily_reward: 15, streak_reward: 5, daily_goal_reward: 20, rewarded_ad_coins: 20, welcome_coins: 30,
-      ads_feed: true, ads_between_chapters: true, ads_discover_tile: true, ads_rewarded: true, chapters_per_interstitial: 3, swipes_per_interstitial: 6,
+      ads_feed: true, ads_between_chapters: true, ads_discover_tile: true, ads_rewarded: true, ads_library_banner: true, chapters_per_interstitial: 3, swipes_per_interstitial: 6,
       announcement: { text: "New Moonless chapters every night at 9 pm 🌕", link: "", until: null } }).map(([key, value]) => ({ key, value })),
     promotions: [
       { id: "p1", title: "Chapter 4 free this weekend 🎉", kind: "free_chapter", book_id: "moonless", params: { chapter: 4 }, starts_at: iso(now - D), ends_at: iso(now + 2 * D), enabled: true },

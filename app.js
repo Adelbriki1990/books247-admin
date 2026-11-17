@@ -620,7 +620,7 @@
     main.innerHTML = `<div class="top"><div><h1>Ads</h1><div class="hi">VIP members never see ads · changes are live within a minute</div></div></div>
       <div class="row" style="align-items:flex-start"><div class="card"><div class="ct">Where ads show</div>
         ${toggle("ads_feed", "Banner in the For You feed", "small ad while swiping books")}${toggle("ads_between_chapters", "Full-screen ad between chapters", "only after the free chapters")}
-        ${toggle("ads_discover_tile", "Book-shaped ad in Discover", "looks like a book tile, marked “Ad”")}${toggle("ads_rewarded", "Watch a video for a free chapter", "readers choose this; best earner")}</div>
+        ${toggle("ads_discover_tile", "Book-shaped ad in Discover", "looks like a book tile, marked “Ad”")}${toggle("ads_rewarded", "Watch a video for a free chapter", "readers choose this; best earner")}${toggle("ads_library_banner", "Banner at the bottom of the Library", "app version 1.1 and later")}</div>
       <div class="card"><div class="ct">How often</div>${stepper("chapters_per_interstitial", "Full-screen ad every", "chapters", 3, 1, 20, 1)}${stepper("swipes_per_interstitial", "Feed ad every", "swipes", 6, 2, 30, 1)}<p class="msg" id="saved"></p>
         <div class="tip" style="margin-top:8px">💡 Fewer ads keep readers reading longer; the video-for-chapter option usually earns the most without annoying anyone.</div></div></div>`;
     wireToggles(main); wireSteppers(main);
