@@ -1,6 +1,6 @@
 # 24/7 Books Admin
 
-**Live:** https://adelbriki1990.github.io/books247-admin/  ·  demo: add `?demo`
+**Live:** https://books-admin.mim-smart.com/ (also https://adelbriki1990.github.io/books247-admin/)  ·  demo: add `?demo`
 
 A separate web app for managing 24/7 Books: add books and covers, upload chapters
 from Word, publish to the iPhone app, see reading and money numbers, and send pushes.
