@@ -13,7 +13,7 @@ window.ADMIN_CONFIG = {
   // Books built into the app (not editable here, but their numbers show on the dashboard).
   builtIn: {
     "moonless": { title: "Moonless", genre: "Fantasy", chapters: 338 , cover: "img/MoonlessCover.jpg" },
-    "echo-chamber": { title: "The Echo Chamber", genre: "Drama", chapters: 5 },
+    "echo-chamber": { title: "The Echo Chamber", genre: "Drama", chapters: 5, cover: "img/EchoChamberCover.jpg" },
     "last-train-home": { title: "The Last Train Home", genre: "Romance", chapters: 8 , cover: "img/LastTrainCover.jpg" },
     "paper-kingdom": { title: "Paper Kingdom", genre: "Drama", chapters: 8 , cover: "img/PaperKingdomCover.jpg" },
     "salt-and-ash": { title: "Salt and Ash", genre: "Fantasy", chapters: 8 , cover: "img/SaltAshCover.jpg" },

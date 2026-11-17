@@ -5,15 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>24/7 Books Admin</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230a0f26'/><circle cx='40' cy='22' r='10' fill='%23e9c46a'/><rect x='14' y='30' width='36' height='22' rx='3' fill='%23efe6cf'/></svg>">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231d2340'/><circle cx='42' cy='20' r='9' fill='%23e9c46a'/><rect x='14' y='32' width='36' height='18' rx='3' fill='%23fffaf0'/></svg>">
+  <link rel="stylesheet" href="styles.css?v=202611172224">
 </head>
 <body>
-  <!-- Sign in -->
+  <!-- ===================== Sign in ===================== -->
   <section id="login" class="login hidden">
-    <div class="stars" aria-hidden="true"></div>
     <div class="login-shell">
-      <!-- Left: the brand, moonlit with floating covers -->
       <div class="login-art" aria-hidden="true">
         <div class="moon"></div>
         <img class="fc c1" src="img/LastTrainCover.jpg" alt="">
@@ -23,40 +21,28 @@
         <img class="fc c5" src="img/SaltAshCover.jpg" alt="">
         <div class="art-copy">
           <div class="art-title">Your stories,<br><em>your numbers.</em></div>
-          <div class="art-sub">Publish books · upload chapters · see who reads what</div>
+          <div class="art-sub">Publish books · run offers · see who reads what</div>
         </div>
       </div>
-
-      <!-- Right: sign in -->
       <div class="login-card">
-        <div class="logo-mark" aria-hidden="true"><span class="lm-moon"></span><span class="lm-book"></span></div>
+        <div class="logo-mark big" aria-hidden="true"></div>
         <div class="brand big">24/7 <b>Books</b><small>Admin</small></div>
-
         <form id="login-form">
           <div id="step-email">
             <h2 class="login-h">Welcome back</h2>
             <p class="login-p">Sign in to manage your books.</p>
-            <label class="field">
-              <span>Email</span>
-              <div class="input-icon"><i aria-hidden="true">✉</i><input id="login-email" type="email" autocomplete="username" placeholder="you@example.com" required></div>
-            </label>
-            <button class="btn gold wide big-btn" type="button" id="send-link">Email me a sign-in link <span aria-hidden="true">→</span></button>
-            <p class="hint">A one-time link · no password needed</p>
-            <details class="pw">
-              <summary>Use a password instead</summary>
-              <label class="field"><span>Password</span>
-                <div class="input-icon"><i aria-hidden="true">🔒</i><input id="login-password" type="password" autocomplete="current-password" placeholder="Your password"></div>
-              </label>
-              <button class="btn wide" type="submit">Sign in</button>
-            </details>
+            <label class="field"><span>Email</span>
+              <input id="login-email" type="email" autocomplete="username" placeholder="you@example.com" required></label>
+            <label class="field"><span>Password</span>
+              <input id="login-password" type="password" autocomplete="current-password" placeholder="Your password"></label>
+            <button class="btn gold wide" type="submit">Sign in</button>
+            <button class="btn ghost wide" type="button" id="send-link">Email me a sign-in link instead</button>
           </div>
-
           <div id="step-sent" class="sent hidden">
             <div class="envelope" aria-hidden="true">✉</div>
             <h2 class="login-h">Check your email</h2>
             <p class="login-p">We sent a sign-in link to<br><b id="sent-to"></b></p>
-            <p class="hint">Open it on this device. It works once and expires in 1 hour.<br>Not there? Look in Spam or Promotions.</p>
-            <button class="btn ghost wide" type="button" id="use-other">Use a different email</button>
+            <button class="btn ghost wide" type="button" id="use-other">Back</button>
           </div>
           <p id="login-msg" class="msg center" role="status"></p>
         </form>
@@ -65,152 +51,35 @@
     </div>
   </section>
 
-  <!-- App -->
+  <!-- ===================== App ===================== -->
   <div id="app" class="app hidden">
     <aside class="side">
-      <div class="brand">24/7 <b>Books</b><small>Admin</small></div>
-      <nav>
-        <a data-view="dashboard" class="on">◧ <span>Dashboard</span></a>
-        <a data-view="books">▤ <span>Books</span></a>
-        <a data-view="notify">✉ <span>Notifications</span></a>
-        <a data-view="settings">⚙ <span>Settings</span></a>
+      <div class="logo"><div class="logo-mark" aria-hidden="true"></div><div><b>24/7 <em>Books</em></b><small>Admin</small></div></div>
+      <nav id="nav">
+        <a href="#home"><i>🏠</i><span>Home</span></a>
+        <a href="#books"><i>📚</i><span>Books</span></a>
+        <a href="#stats"><i>📈</i><span>Stats</span></a>
+        <a href="#readers"><i>👥</i><span>Readers</span></a>
+        <a href="#money"><i>💰</i><span>Money &amp; offers</span></a>
+        <a href="#notify"><i>🔔</i><span>Notifications</span></a>
+        <div class="navh">App</div>
+        <a href="#homescreen"><i>📱</i><span>Home screen</span></a>
+        <a href="#ads"><i>📣</i><span>Ads</span></a>
+        <a href="#team"><i>🛡</i><span>Team &amp; activity</span></a>
       </nav>
-      <div class="who"><span id="who-email"></span><button id="logout" class="link">Sign out</button></div>
+      <div class="who"><div class="av" id="who-av">A</div><div><b id="who-email"></b><br><button class="link" id="logout">Sign out</button></div></div>
     </aside>
-
-    <main class="main">
-      <!-- Dashboard -->
-      <section id="view-dashboard" class="view">
-        <div class="top">
-          <h1>Dashboard</h1>
-          <div class="pills" id="range">
-            <button data-days="30" class="pill on">Last 30 days</button>
-            <button data-days="7" class="pill">7 days</button>
-            <button data-days="1" class="pill">Today</button>
-          </div>
-        </div>
-        <div class="kpis" id="kpis"></div>
-        <div class="row">
-          <div class="card grow2"><div class="ct">Chapters read per day</div><div id="chart" class="chart"></div></div>
-          <div class="card grow1">
-            <div class="ct between">Where readers stop <select id="funnel-book"></select></div>
-            <div id="funnel"></div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="ct">Books</div>
-          <div class="table-wrap"><table id="books-table"></table></div>
-        </div>
-        <p class="foot">Revenue is an estimate from verified App Store purchases, before Apple's 15–30% share. Reading numbers come from the app; signed-out readers are counted by an anonymous device id.</p>
-      </section>
-
-      <!-- Books -->
-      <section id="view-books" class="view hidden">
-        <div class="top"><h1>Books</h1><button class="btn gold" id="new-book">＋ New book</button></div>
-        <div class="card"><div class="ct">Your books</div><div class="grid" id="book-grid"></div></div>
-        <div class="card"><div class="ct">Built into the app</div><p class="muted">These ship inside the iPhone app. Their numbers show on the dashboard; changes to them need an app update.</p><div class="chips" id="builtin-list"></div></div>
-      </section>
-
-      <!-- Book editor -->
-      <section id="view-editor" class="view hidden">
-        <div class="top"><h1 id="editor-title">New book</h1><button class="btn ghost" id="editor-back">← All books</button></div>
-        <div class="card">
-          <div class="editor">
-            <label class="drop" id="cover-drop">
-              <img id="cover-preview" alt="">
-              <span id="cover-hint"><b>⬆︎</b>Drop the cover here<small>or click · JPG or PNG · portrait works best</small></span>
-              <input id="cover-file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
-            </label>
-            <div class="fields">
-              <label>Title<input id="f-title" maxlength="80"></label>
-              <label>Author<input id="f-author" value="24/7 Originals" maxlength="60"></label>
-              <div class="two">
-                <label>Genre<select id="f-genre"><option>Romance</option><option>Fantasy</option><option>Drama</option><option>Thriller</option><option>Mystery</option><option>Horror</option><option>Werewolf</option><option>Billionaire</option><option>Mafia</option><option>Young Adult</option></select></label>
-                <label>Badge<select id="f-badge"><option value="">None</option><option>NEW</option><option>HOT</option><option>TRENDING</option></select></label>
-              </div>
-              <label>Hook <small>(one line under the title)</small><textarea id="f-hook" rows="2" maxlength="220"></textarea></label>
-              <div class="two">
-                <label>Colour 1<input id="f-color1" type="color" value="#2e1430"></label>
-                <label>Colour 2<input id="f-color2" type="color" value="#0a1c38"></label>
-              </div>
-              <div class="two">
-                <label>Order in the app <small>(lower = first)</small><input id="f-sort" type="number" value="10"></label>
-                <label>Status<select id="f-published"><option value="false">Draft (hidden)</option><option value="true">Live in the app</option></select></label>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="ct between">Chapters <span id="chapter-count" class="muted"></span></div>
-          <div class="docx" id="docx-drop">
-            <b>Upload chapters from a Word file (.docx)</b> — each “Chapter 1”, “Chapter 2”… heading starts a new chapter.
-            <div class="docx-actions">
-              <label class="btn">Choose Word file<input id="docx-file" type="file" accept=".docx" hidden></label>
-              <select id="docx-mode"><option value="replace">Replace all chapters</option><option value="append">Add after the last chapter</option></select>
-            </div>
-            <div id="docx-result" class="muted"></div>
-          </div>
-          <div id="chapter-list" class="chapter-list"></div>
-        </div>
-
-        <div class="acts">
-          <button class="btn danger" id="delete-book">Delete book</button>
-          <span class="grow"></span>
-          <button class="btn ghost" id="save-draft">Save as draft</button>
-          <button class="btn" id="publish">Publish</button>
-          <button class="btn gold" id="publish-notify">Publish &amp; notify readers 🔔</button>
-        </div>
-        <p id="editor-msg" class="msg"></p>
-      </section>
-
-      <!-- Chapter editor (modal) -->
-      <div id="chapter-modal" class="modal hidden">
-        <div class="modal-card">
-          <div class="ct between"><span id="cm-heading">Chapter</span><button class="link" id="cm-close">Close</button></div>
-          <label>Title<input id="cm-title"></label>
-          <label>Text <small>(blank line between paragraphs · *italic* · **bold**)</small><textarea id="cm-text" rows="18"></textarea></label>
-          <div class="acts"><button class="btn danger" id="cm-delete">Delete chapter</button><span class="grow"></span><button class="btn gold" id="cm-save">Save chapter</button></div>
-        </div>
-      </div>
-
-      <!-- Notifications -->
-      <section id="view-notify" class="view hidden">
-        <div class="top"><h1>Notifications</h1></div>
-        <div class="card narrow">
-          <div class="ct">Send a notification to readers</div>
-          <p class="muted" id="push-devices"></p>
-          <label>Title<input id="n-title" maxlength="60" placeholder="New chapter: Moonless 14 🌕"></label>
-          <label>Message<textarea id="n-body" rows="3" maxlength="180" placeholder="Wren finally hears the call. Tap to keep reading."></textarea></label>
-          <label>Open this book when tapped<select id="n-book"></select></label>
-          <div class="acts"><span class="grow"></span><button class="btn gold" id="n-send">Send to all readers</button></div>
-          <p id="n-msg" class="msg"></p>
-          <p class="muted small">Tip: one or two pushes a week keeps readers coming back without making them turn notifications off.</p>
-        </div>
-      </section>
-
-      <!-- Settings -->
-      <section id="view-settings" class="view hidden">
-        <div class="top"><h1>Settings</h1></div>
-        <div class="card narrow">
-          <div class="ct">How this admin works</div>
-          <ul class="list">
-            <li>Books you publish here appear in the iPhone app the next time readers open it — no App Store update needed.</li>
-            <li>Covers are stored in Supabase Storage (bucket <code>covers</code>) and shown in the app.</li>
-            <li>Only accounts in the <code>admins</code> table can sign in here or change anything.</li>
-            <li>Revenue prices used for estimates live in <code>config.js</code>.</li>
-          </ul>
-        </div>
-      </section>
-    </main>
+    <main class="main" id="main"></main>
   </div>
 
+  <!-- Modal + toast -->
+  <div id="modal" class="modal hidden"><div class="modal-card" id="modal-card"></div></div>
   <div id="toast" class="toast hidden"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
-  <script src="config.js"></script>
-  <script src="demo.js"></script>
-  <script src="app.js"></script>
+  <script src="config.js?v=202611172224"></script>
+  <script src="demo.js?v=202611172224"></script>
+  <script src="app.js?v=202611172224"></script>
 </body>
 </html>
