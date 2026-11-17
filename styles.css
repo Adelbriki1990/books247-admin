@@ -91,7 +91,7 @@ code { background: #ffffff14; padding: 1px 6px; border-radius: 6px; }
 .side nav a { padding: 11px 14px; border-radius: 11px; cursor: pointer; opacity: .78; user-select: none; }
 .side nav a:hover { background: #ffffff0d; opacity: 1; }
 .side nav a.on { background: linear-gradient(90deg, #e2b85a33, transparent); box-shadow: inset 3px 0 #e2b85a; color: #f3dc9a; opacity: 1; }
-.who { margin-top: auto; font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; word-break: break-all; }
+.who { margin-top: auto; padding-bottom: 8px; font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; word-break: break-all; }
 .main { flex: 1; min-width: 0; padding: 26px 30px 60px; }
 .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
 
@@ -141,10 +141,11 @@ input[type=color] { display: block; margin-top: 5px; width: 100%; height: 42px; 
 .chart .empty, .empty { color: var(--muted); padding: 30px 0; text-align: center; }
 
 .fr { display: flex; align-items: center; gap: 10px; margin: 9px 0; font-size: 13px; }
-.fr span { width: 92px; flex: none; color: var(--muted); }
+.fr span { width: 104px; flex: none; color: var(--muted); white-space: nowrap; }
 .fb { flex: 1; height: 11px; background: #ffffff14; border-radius: 6px; overflow: hidden; }
 .fb i { display: block; height: 100%; background: var(--gold-grad); }
-.fr b { width: 74px; text-align: right; flex: none; font-weight: 600; }
+.fr b { width: 42px; text-align: right; flex: none; font-weight: 600; }
+.fr em { width: 48px; text-align: right; flex: none; font-style: normal; color: var(--muted); font-size: 12px; }
 #funnel-book { width: auto; max-width: 200px; margin: 0; padding: 6px 10px; font-size: 13px; }
 
 .table-wrap { overflow-x: auto; }
@@ -212,3 +213,5 @@ td small { color: var(--muted); }
   .drop { width: 160px; }
   .two { grid-template-columns: 1fr; }
 }
+
+.demo-banner { position: sticky; top: 0; z-index: 40; text-align: center; padding: 7px 12px; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: #2a1e05; background: var(--gold-grad); }

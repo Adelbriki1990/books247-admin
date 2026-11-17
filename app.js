@@ -4,7 +4,14 @@
 (() => {
   "use strict";
   const C = window.ADMIN_CONFIG;
-  const sb = window.supabase.createClient(C.supabaseUrl, C.supabaseAnonKey);
+  // Demo mode (?demo): example numbers, never touches the real database.
+  const DEMO = new URLSearchParams(location.search).has("demo") && typeof window.makeDemoClient === "function";
+  const sb = DEMO ? window.makeDemoClient() : window.supabase.createClient(C.supabaseUrl, C.supabaseAnonKey);
+  if (DEMO) document.addEventListener("DOMContentLoaded", () => {
+    const b = document.createElement("div"); b.className = "demo-banner";
+    b.textContent = "DEMO · example numbers · nothing here is real or saved";
+    document.body.prepend(b);
+  });
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => [...document.querySelectorAll(s)];
   const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -52,6 +59,12 @@
     await loadStories();
     show("dashboard");
     loadDashboard();
+    if (DEMO) {   // demo: ?demo&view=books|editor|notify opens that page directly
+      const v = new URLSearchParams(location.search).get("view");
+      if (v === "books") { show("books"); renderBooks(); }
+      if (v === "editor") openEditor(stories[0]?.id || null);
+      if (v === "notify") { show("notify"); renderNotify(); }
+    }
   }
   function showLogin(msg = "", err = false) {
     $("#app").classList.add("hidden");
@@ -147,7 +160,8 @@
 
   function coverFor(id) {
     const s = stories.find((x) => x.id === id);
-    return s?.cover_url ? `<img src="${esc(s.cover_url)}" alt="">` : '<div class="ph"></div>';
+    const url = s?.cover_url || C.builtIn[id]?.cover;
+    return url ? `<img src="${esc(url)}" alt="">` : '<div class="ph"></div>';
   }
   function renderBooksTable(rows) {
     const t = $("#books-table");
@@ -181,8 +195,8 @@
     const reached = (c) => Math.max(0, ...data.filter((r) => r.chapter >= c).map((r) => r.readers));
     box.innerHTML = marks.map((c) => {
       const n = reached(c), pct = first ? Math.round((n / first) * 100) : 0;
-      const label = c === C.freeChapters ? `Ch ${c} · last free` : c === C.freeChapters + 1 ? `Ch ${c} · 1st locked` : `Chapter ${c}`;
-      return `<div class="fr"><span>${label}</span><div class="fb"><i style="width:${Math.min(100, pct)}%"></i></div><b>${pct}% · ${fmt(n)}</b></div>`;
+      const label = c === C.freeChapters ? `Ch ${c} · last free` : c === C.freeChapters + 1 ? `Ch ${c} · locked` : `Chapter ${c}`;
+      return `<div class="fr"><span>${label}</span><div class="fb"><i style="width:${Math.min(100, pct)}%"></i></div><b>${pct}%</b><em>${fmt(n)}</em></div>`;
     }).join("") + (byCh.size ? `<div class="msg">${Math.round((reached(C.freeChapters + 1) / first) * 100 || 0)}% keep reading after the first locked chapter</div>` : "");
   }
 
