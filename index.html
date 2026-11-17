@@ -15,8 +15,13 @@
       <div class="brand big">24/7 <b>Books</b><small>Admin</small></div>
       <form id="login-form">
         <label>Email<input id="login-email" type="email" autocomplete="username" required></label>
-        <label>Password<input id="login-password" type="password" autocomplete="current-password" required></label>
-        <button class="btn gold wide" type="submit">Sign in</button>
+        <button class="btn gold wide" type="button" id="send-link">Email me a sign-in link</button>
+        <p class="muted small center">We send a one-time link to your email. Open it on this device to sign in — no password needed.</p>
+        <details class="pw">
+          <summary>Sign in with a password instead</summary>
+          <label>Password<input id="login-password" type="password" autocomplete="current-password"></label>
+          <button class="btn wide" type="submit">Sign in</button>
+        </details>
         <p id="login-msg" class="msg"></p>
       </form>
     </div>

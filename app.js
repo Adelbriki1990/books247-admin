@@ -58,8 +58,22 @@
     $("#login").classList.remove("hidden");
     setMsg($("#login-msg"), msg, err);
   }
+  // One-time sign-in link by email (only existing accounts; admins are checked after).
+  $("#send-link").addEventListener("click", async () => {
+    const email = $("#login-email").value.trim();
+    if (!/^\S+@\S+\.\S+$/.test(email)) return setMsg($("#login-msg"), "Type your email first.", true);
+    $("#send-link").disabled = true; setMsg($("#login-msg"), "Sending…");
+    const { error } = await sb.auth.signInWithOtp({
+      email, options: { shouldCreateUser: false, emailRedirectTo: location.origin + location.pathname },
+    });
+    $("#send-link").disabled = false;
+    if (error) return setMsg($("#login-msg"), /signups not allowed|not found/i.test(error.message) ? "No admin account with that email." : "Couldn't send: " + error.message, true);
+    setMsg($("#login-msg"), "✓ Check your email and open the link on this device.");
+  });
+
   $("#login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (!$("#login-password").value) return setMsg($("#login-msg"), "Type your password, or use the email link.", true);
     setMsg($("#login-msg"), "Signing in…");
     const { error } = await sb.auth.signInWithPassword({ email: $("#login-email").value.trim(), password: $("#login-password").value });
     if (error) return setMsg($("#login-msg"), "Wrong email or password.", true);

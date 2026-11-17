@@ -24,6 +24,10 @@ code { background: #ffffff14; padding: 1px 6px; border-radius: 6px; }
 .login { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 16px; }
 .login-card { width: 100%; max-width: 380px; background: var(--panel); border: 1px solid #e2b85a44; border-radius: 22px; padding: 34px 28px; box-shadow: 0 30px 80px #000a; }
 
+.center { text-align: center; }
+.pw { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; }
+.pw summary { cursor: pointer; color: var(--muted); font-size: 13px; margin-bottom: 10px; }
+
 /* Layout */
 .app { display: flex; min-height: 100vh; }
 .side { width: 220px; flex: none; background: #090e26; border-right: 1px solid var(--line); padding: 24px 14px; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; }
