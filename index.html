@@ -11,19 +11,57 @@
 <body>
   <!-- Sign in -->
   <section id="login" class="login hidden">
-    <div class="login-card">
-      <div class="brand big">24/7 <b>Books</b><small>Admin</small></div>
-      <form id="login-form">
-        <label>Email<input id="login-email" type="email" autocomplete="username" required></label>
-        <button class="btn gold wide" type="button" id="send-link">Email me a sign-in link</button>
-        <p class="muted small center">We send a one-time link to your email. Open it on this device to sign in — no password needed.</p>
-        <details class="pw">
-          <summary>Sign in with a password instead</summary>
-          <label>Password<input id="login-password" type="password" autocomplete="current-password"></label>
-          <button class="btn wide" type="submit">Sign in</button>
-        </details>
-        <p id="login-msg" class="msg"></p>
-      </form>
+    <div class="stars" aria-hidden="true"></div>
+    <div class="login-shell">
+      <!-- Left: the brand, moonlit with floating covers -->
+      <div class="login-art" aria-hidden="true">
+        <div class="moon"></div>
+        <img class="fc c1" src="img/LastTrainCover.jpg" alt="">
+        <img class="fc c2" src="img/MoonlessCover.jpg" alt="">
+        <img class="fc c3" src="img/MidnightShiftCover.jpg" alt="">
+        <img class="fc c4" src="img/PaperKingdomCover.jpg" alt="">
+        <img class="fc c5" src="img/SaltAshCover.jpg" alt="">
+        <div class="art-copy">
+          <div class="art-title">Your stories,<br><em>your numbers.</em></div>
+          <div class="art-sub">Publish books · upload chapters · see who reads what</div>
+        </div>
+      </div>
+
+      <!-- Right: sign in -->
+      <div class="login-card">
+        <div class="logo-mark" aria-hidden="true"><span class="lm-moon"></span><span class="lm-book"></span></div>
+        <div class="brand big">24/7 <b>Books</b><small>Admin</small></div>
+
+        <form id="login-form">
+          <div id="step-email">
+            <h2 class="login-h">Welcome back</h2>
+            <p class="login-p">Sign in to manage your books.</p>
+            <label class="field">
+              <span>Email</span>
+              <div class="input-icon"><i aria-hidden="true">✉</i><input id="login-email" type="email" autocomplete="username" placeholder="you@example.com" required></div>
+            </label>
+            <button class="btn gold wide big-btn" type="button" id="send-link">Email me a sign-in link <span aria-hidden="true">→</span></button>
+            <p class="hint">A one-time link · no password needed</p>
+            <details class="pw">
+              <summary>Use a password instead</summary>
+              <label class="field"><span>Password</span>
+                <div class="input-icon"><i aria-hidden="true">🔒</i><input id="login-password" type="password" autocomplete="current-password" placeholder="Your password"></div>
+              </label>
+              <button class="btn wide" type="submit">Sign in</button>
+            </details>
+          </div>
+
+          <div id="step-sent" class="sent hidden">
+            <div class="envelope" aria-hidden="true">✉</div>
+            <h2 class="login-h">Check your email</h2>
+            <p class="login-p">We sent a sign-in link to<br><b id="sent-to"></b></p>
+            <p class="hint">Open it on this device. It works once and expires in 1 hour.<br>Not there? Look in Spam or Promotions.</p>
+            <button class="btn ghost wide" type="button" id="use-other">Use a different email</button>
+          </div>
+          <p id="login-msg" class="msg center" role="status"></p>
+        </form>
+        <div class="login-foot">Private · admins only</div>
+      </div>
     </div>
   </section>
 

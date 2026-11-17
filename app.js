@@ -67,9 +67,18 @@
       email, options: { shouldCreateUser: false, emailRedirectTo: location.origin + location.pathname },
     });
     $("#send-link").disabled = false;
-    if (error) return setMsg($("#login-msg"), /signups not allowed|not found/i.test(error.message) ? "No admin account with that email." : "Couldn't send: " + error.message, true);
-    setMsg($("#login-msg"), "✓ Check your email and open the link on this device.");
+    if (error) return setMsg($("#login-msg"), /signups not allowed|not found/i.test(error.message) ? "No admin account with that email." : /rate|seconds/i.test(error.message) ? "Please wait a minute before asking for another link." : "Couldn't send: " + error.message, true);
+    setMsg($("#login-msg"), "");
+    $("#sent-to").textContent = email;
+    $("#step-email").classList.add("hidden");
+    $("#step-sent").classList.remove("hidden");
   });
+  $("#use-other").addEventListener("click", () => {
+    $("#step-sent").classList.add("hidden");
+    $("#step-email").classList.remove("hidden");
+    $("#login-email").focus();
+  });
+  $("#login-email").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); $("#send-link").click(); } });
 
   $("#login-form").addEventListener("submit", async (e) => {
     e.preventDefault();
