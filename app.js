@@ -67,7 +67,7 @@
       email, options: { shouldCreateUser: false, emailRedirectTo: location.origin + location.pathname },
     });
     $("#send-link").disabled = false;
-    if (error) return setMsg($("#login-msg"), /signups not allowed|not found/i.test(error.message) ? "No admin account with that email." : /rate|seconds/i.test(error.message) ? "Please wait a minute before asking for another link." : "Couldn't send: " + error.message, true);
+    if (error) return setMsg($("#login-msg"), /signups not allowed|not found/i.test(error.message) ? "No admin account with that email." : /rate limit|too many/i.test(error.message) ? "Email limit reached (Supabase free email sends ~2 per hour). Please try again in an hour." : /seconds/i.test(error.message) ? "Please wait a minute before asking for another link." : "Couldn't send: " + error.message, true);
     setMsg($("#login-msg"), "");
     $("#sent-to").textContent = email;
     $("#step-email").classList.add("hidden");
